@@ -83,7 +83,7 @@ Descomenta la línea `<img>` y comenta o elimina el div `.photo-placeholder` que
 
 Busca en `index.html`:
 - `Sofía` y `Mateo` → reemplaza con los nombres reales
-- `15 · XI · 2025` → cambia la fecha
+- `15 · XI · 2026` → cambia la fecha
 - `Catedral Metropolitana` → nombre real de la iglesia
 - `Hacienda Los Olivos` → nombre real del salón
 - `Plaza Mayor s/n` → dirección real

@@ -10,19 +10,19 @@
 
 <style>
 :root {
-  --cream:  #f7f3ec;
-  --cream2: #f0ece3;
-  --olive:  #2d3a2e;
-  --olive2: #3d4e3e;
-  --gold:   #c9b99a;
-  --gold2:  #a89f7e;
-  --brown:  #6b6357;
+  --cream:  #f3edde;
+  --cream2: #d8d5da;
+  --olive:  #3f2b01;
+  --olive2: #39265a;
+  --gold:   #D7B05B;
+  --gold2:  #3f2b01;
+  --brown:  #7e5894;
   --sage:   #8a9e7a;
   --text:   #3a3228;
   --sun:    #e8b84b;
   --sun2:   #5a3a10;
   --iris:   #9b8fc0;
-  --rose-w: #f0ece4;
+  --rose-w: #ccb6dd;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -260,6 +260,7 @@ body {
   border:1px solid rgba(201,185,154,.38); margin:1.5rem 0; background:white;
   transition:transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease;
   overflow:hidden;
+  border-radius: 10px;
 }
 .venue-box:hover { transform:translateY(-6px); box-shadow:0 24px 60px rgba(45,58,46,.11); }
 .venue-img {
@@ -430,6 +431,12 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
     linear-gradient(140deg, rgba(168,149,118,.07) 0%, transparent 45%),
     linear-gradient(220deg, rgba(168,149,118,.07) 0%, transparent 45%);
 }
+.cover-stamp-inner-img {
+  width: 72px; height: 72px;
+  border: 1px solid rgba(201,185,154,.3); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  animation: spin 30s linear infinite;
+}
 #env-top::after {
   content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
   background: linear-gradient(90deg, transparent, rgba(168,149,118,.35), transparent);
@@ -454,7 +461,7 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
   position: absolute; top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   z-index: 5; width: 74px; height: 74px;
-  background: radial-gradient(circle at 42% 38%, #3d4e3e, #2d3a2e);
+  background: radial-gradient(circle at 42% 38%, #f1a604, #523f03);
   border-radius: 50%; border: 1px solid rgba(201,185,154,.5);
   box-shadow: 0 4px 28px rgba(0,0,0,.28), 0 0 0 10px rgba(201,185,154,.06);
   display: flex; align-items: center; justify-content: center;
@@ -531,6 +538,52 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
 }
 .flt-c { animation: flt-c 7s ease-in-out infinite; }
 
+/* ── FLORAL EN SOBRE ── */
+.env-floral-center {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(300px, 64vw);
+  z-index: 4; pointer-events: none;
+  opacity: .9; animation: flt-a 5.5s ease-in-out infinite;
+  transition: opacity .5s ease;
+}
+#env-screen.opening .env-floral-center { opacity: 0; }
+
+/* ── DECO IMAGEN SECCIONES ── */
+.sec-deco-wrap {
+  position: absolute; pointer-events: none; z-index: 0;
+  opacity: 0;
+  transition: opacity .9s ease, transform 1s cubic-bezier(.16,1,.3,1);
+}
+.sec-deco-wrap img { display: block; }
+
+/* ── INFINITO FOOTER ── */
+.footer-infinity {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(130px, 36vw, 190px);
+  color: rgba(201,185,154,.06);
+  pointer-events: none; z-index: 0;
+  line-height: 1; user-select: none; white-space: nowrap;
+}
+.footer-flores {
+  position: absolute; top: -20%; left: -30%;
+  transform: translate(-50%, -50%);
+  width: min(300px, 64vw);
+  z-index: 4; pointer-events: none;
+  opacity: .80; animation: flt-a 5.5s ease-in-out infinite;
+  transition: opacity .5s ease;
+}
+
+.footer-floresderecha {
+  position: absolute; top: 50%; right: -30%;
+  transform: translate(50%, -50%);
+  width: min(300px, 64vw);
+  z-index: 4; pointer-events: none;
+  opacity: .80; animation: flt-b 5.5s ease-in-out infinite;
+  transition: opacity .5s ease;
+}
 /* scrollbar */
 ::-webkit-scrollbar { width:3px; }
 ::-webkit-scrollbar-track { background:#111210; }
@@ -658,6 +711,9 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
     </svg>
     <p class="env-hint">Toca para abrir ✦</p>
   </div>
+
+  <!-- Arreglo redondo: guarda tu imagen como assets/flores/arreglo-redondo.png -->
+  <img src="assets/flores/redondo completo.svg" class="env-floral-center" alt="">
 
   <!-- Sello central -->
   <div class="env-seal-center">
@@ -826,6 +882,7 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
           <path d="M20 6 Q22 13 29 13 Q22 15 25 22 Q20 16 15 22 Q18 15 11 13 Q18 13 20 6Z" fill="rgba(201,185,154,.75)"/>
           <path d="M20 26 Q21 30 25 30 Q21 31 22 35 Q20 32 18 35 Q19 31 15 30 Q19 30 20 26Z" fill="rgba(201,185,154,.45)"/>
         </svg>
+        <img src="assets/flores/redondo completo.svg" class="cover-stamp-inner-img" alt="">
       </div>
     </div>
 
@@ -1009,16 +1066,16 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
 
     <div class="venue-box rv rv-d3">
       <div class="venue-img" style="background:linear-gradient(135deg,var(--gold),var(--gold2))">
-        <!-- <img src="assets/fotos/lugar.jpg" alt="Lugar"> -->
+        <img src="assets/fotos/lugar.png" alt="Lugar">
         <div class="venue-img-placeholder">
           <svg viewBox="0 0 60 60"><path d="M5 55h50M5 25h50M10 55V25m8 30V25m8 30V25m8 30V25m8 30V25m8 30V25M5 25L30 8l25 17"/></svg>
         </div>
       </div>
       <div class="venue-body">
-        <p class="venue-time">17:00 h — Viernes 18 de Julio, 2026</p>
-        <p class="venue-name">Nombre del Lugar</p>
-        <p class="venue-addr">Dirección del lugar<br>Ciudad</p>
-        <a class="venue-map-btn" href="https://maps.google.com" target="_blank">
+        <p class="venue-time">17:00 h — Sabado 18 de Julio, 2026</p>
+        <p class="venue-name">Decomarc eventos</p>
+        <p class="venue-addr">6to. Anillos cerca la Av. Doble via la Guardia<br>Santa Cruz de la Sierra</p>
+        <a class="venue-map-btn" href="https://maps.app.goo.gl/tm4w1RHqEpvekyj36" target="_blank">
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           Ver en Maps
         </a>
@@ -1031,7 +1088,7 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
   <!-- ══ DRESS CODE ══ -->
   <div class="sec sec-alt rv">
     <span class="lbl rv rv-d1">Vestimenta</span>
-    <h2 class="title rv rv-d2">Dress Code</h2>
+    <h2 class="title rv rv-d2">Codigo de vestimenta</h2>
     <p class="rv rv-d2" style="font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:4px;text-transform:uppercase;color:var(--olive);margin-top:.25rem">Formal</p>
     <div class="dc-wrap">
       <div class="dc-item rv-zoom rv rv-d2">
@@ -1059,23 +1116,28 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
     <div class="tl">
       <div class="tl-item">
         <div class="tl-icon"><svg viewBox="0 0 24 24"><path d="M3 22V10L12 3l9 7v12M9 22v-7h6v7"/></svg></div>
-        <div class="tl-time">18:00</div>
-        <div class="tl-info"><p class="tl-lbl">Ceremonia</p><p class="tl-desc">Unión religiosa en la Catedral</p></div>
+        <div class="tl-time">17:00</div>
+        <div class="tl-info"><p class="tl-lbl">Ceremonia</p><p class="tl-desc">Unión civil y religiosa</p></div>
       </div>
       <div class="tl-item">
         <div class="tl-icon"><svg viewBox="0 0 24 24"><path d="M8 10V6a4 4 0 018 0v4M3 10h18l-1.5 10H4.5L3 10z"/></svg></div>
         <div class="tl-time">19:30</div>
-        <div class="tl-info"><p class="tl-lbl">Cóctel</p><p class="tl-desc">Bienvenida en los jardines</p></div>
+        <div class="tl-info"><p class="tl-lbl">Cóctel</p><p class="tl-desc">Bienvenida de los esposos</p></div>
       </div>
       <div class="tl-item">
         <div class="tl-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg></div>
-        <div class="tl-time">20:30</div>
+        <div class="tl-time">21:00</div>
         <div class="tl-info"><p class="tl-lbl">Banquete</p><p class="tl-desc">Cena en el salón principal</p></div>
       </div>
       <div class="tl-item">
         <div class="tl-icon"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M5 21a2 2 0 100-4 2 2 0 000 4zM17 19a2 2 0 100-4 2 2 0 000 4z"/></svg></div>
-        <div class="tl-time">23:00</div>
+        <div class="tl-time">22:00</div>
         <div class="tl-info"><p class="tl-lbl">Fiesta</p><p class="tl-desc">Música y baile hasta el amanecer</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg></div>
+        <div class="tl-time">23:30</div>
+        <div class="tl-info"><p class="tl-lbl">Postres</p><p class="tl-desc">Corte de la torta y celebración</p></div>
       </div>
     </div>
   </div>
@@ -1125,11 +1187,12 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
       </div>
       <div class="tip-item">
         <div class="tip-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/><line x1="4" y1="20" x2="20" y2="4"/></svg>
-        </div>
+<svg viewBox="0 0 24 24">
+      <path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/>
+    </svg>        </div>
         <div>
-          <p class="tip-title">Tacones altos, mejor déjalos en casa</p>
-          <p class="tip-desc">El terreno del lugar puede ser irregular — ¡bailarás mejor sin ellos!</p>
+          <p class="tip-title">No llegues tarde</p>
+          <p class="tip-desc">Hemos preparado momentos especiales desde el comienzo y nos encantará compartirlos contigo.!!</p>
         </div>
       </div>
     </div>
@@ -1318,6 +1381,7 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
   <!-- ══ FOOTER ══ -->
   <div class="orn orn-dark rv"><div class="orn-line"></div><div class="orn-center">— ✦ —</div><div class="orn-line"></div></div>
   <div class="footer rv">
+    <div class="footer-infinity">∞</div>
     <svg class="fl flt-a" width="150" height="56" viewBox="0 0 150 56" fill="none" style="margin-bottom:1.75rem;opacity:.32">
       <path d="M0 28 Q37 8 75 28 Q113 48 150 28" stroke="#c9b99a" stroke-width=".9" fill="none"/>
       <ellipse cx="37" cy="18" rx="10" ry="5" fill="#4a6a3a" opacity=".45" transform="rotate(-12 37 18)"/>
@@ -1338,6 +1402,8 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
     <p class="footer-date">18 · Julio · 2026</p>
     <div class="hairline" style="background:linear-gradient(90deg,transparent,rgba(201,185,154,.3),transparent);margin-top:1.75rem"></div>
     <p class="footer-love">Con todo nuestro amor, para siempre</p>
+    <img src="assets/flores/infinito.svg" class="footer-flores" alt="">
+    <img src="assets/flores/infinito.svg" class="footer-floresderecha" alt="">
   </div>
 
 </div><!-- /inv -->
@@ -1696,6 +1762,70 @@ function loop() {
   requestAnimationFrame(loop);
 }
 loop();
+
+/* ══════════════════════════════════════════
+   IMÁGENES DECORATIVAS EN SECCIONES
+   Guarda tus imágenes como:
+     assets/flores/arreglo-redondo.png
+     assets/flores/arreglo-diagonal.png
+══════════════════════════════════════════ */
+(function injectDecoImgs() {
+  /* cada entrada: imagen, posición, rotación inicial (oculta), rotación final (visible) */
+  /*
+   * Diagonal: SIEMPRE izquierda, grande (-14 a -16 deg, inclinada como debe)
+   * Redonda:  SIEMPRE derecha, mediana
+   * Se alternan arriba/abajo para ritmo visual
+   * dx/dy = desplazamiento inicial (desde la esquina) para efecto entrada
+   */
+  var cfg = [
+    // diagonal abajo-izquierda
+    { img:'diagonal.svg', t:'0', r:'auto', b:'0',   l:'0',   rot:'-15deg', dx:'18px', dy:'18px',  sz:'220px', an:'flt-a' },
+    // redonda arriba-derecha
+    { img:'redondo.svg',  t:'0',    r:'0',    b:'auto',l:'auto', rot:'-8deg',  dx:'18px',  dy:'-18px', sz:'125px', an:'flt-b' },
+    // diagonal arriba-izquierda
+    { img:'diagonal.svg', t:'0',    r:'auto', b:'auto', l:'0',   rot:'-13deg', dx:'18px', dy:'18px', sz:'220px', an:'flt-a' },
+    // redonda abajo-derecha
+    { img:'redondo.svg',  t:'0', r:'0',    b:'0',   l:'auto', rot:'9deg',   dx:'18px',  dy:'18px',  sz:'122px', an:'flt-c' },
+    // diagonal abajo-izquierda (variante)
+    { img:'diagonal.svg',t:'0',    r:'auto', b:'0',l:'0',   rot:'-13deg', dx:'18px', dy:'18px', sz:'220px', an:'flt-a' },
+    // redonda arriba-derecha (variante)
+    { img:'redondo.svg',   t:'0',    r:'0',    b:'auto',l:'auto', rot:'-8deg',  dx:'18px',  dy:'-18px', sz:'125px', an:'flt-b'  },
+  ];
+
+  var secs = Array.from(document.querySelectorAll('.sec, .sec-alt, .sec-dark'));
+  secs.forEach(function(sec, i) {
+    var c = cfg[i % cfg.length];
+    var wrap = document.createElement('div');
+    wrap.className = 'sec-deco-wrap';
+    wrap.style.cssText =
+      'position:absolute;pointer-events:none;z-index:0;' +
+      'top:' + c.t + ';right:' + c.r + ';bottom:' + c.b + ';left:' + c.l + ';' +
+      'opacity:0;' +
+      'transform:translate(' + c.dx + ',' + c.dy + ') rotate(' + c.rot + ');' +
+      'transition:opacity .85s ease, transform 1s cubic-bezier(.16,1,.3,1);';
+    wrap.dataset.rot = c.rot;
+
+    var img = document.createElement('img');
+    img.src = 'assets/flores/' + c.img;
+    img.alt = '';
+    img.style.cssText = 'width:' + c.sz + ';display:block;animation:' + c.an + ' 5.5s ease-in-out infinite;';
+    wrap.appendChild(img);
+    sec.appendChild(wrap);
+  });
+
+  /* observer: fade-in + desliza a posición final al entrar en viewport */
+  var ioD = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (!e.isIntersecting) return;
+      var el = e.target;
+      el.style.opacity = el.closest('.sec-dark') ? '.45' : '.6';
+      el.style.transform = 'rotate(' + el.dataset.rot + ')';
+      ioD.unobserve(el);
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.sec-deco-wrap').forEach(function(el) { ioD.observe(el); });
+})();
 
 /* ══════════════════════════════════════════
    ROSAS BLANCAS + IRIS EN TODAS LAS SECCIONES

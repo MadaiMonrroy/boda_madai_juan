@@ -23,6 +23,14 @@
   --sun2:   #5a3a10;
   --iris:   #9b8fc0;
   --rose-w: #ccb6dd;
+  --rose:#F4F0EB;
+   --brown:#4A3200;
+
+  --sunflower:#DDB54A;
+  --sunflower-center:#5A3415;
+  --lilac:#C8B4D9;
+  --leaf:#8BA173;
+  --leaf-dark:#647B58;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -74,8 +82,8 @@ body {
   color: var(--gold); opacity: 0; transform: scale(.8);
 }
 .ld-date {
-  font-size: 9px; letter-spacing: 6px; text-transform: uppercase;
-  color: var(--gold); opacity: 5;
+  font-size: 15px; letter-spacing: 6px; text-transform: uppercase; font-weight: 600;
+  color: var(--gold); opacity: 80;
 }
 .ld-bar {
   width: 100px; height: 1px; background: rgba(201,185,154,.15);
@@ -213,8 +221,8 @@ body {
   color: var(--gold); display: block; margin: .05rem 0; opacity: 0;
 }
 .cover-date {
-  font-size: 9px; letter-spacing: 6px; text-transform: uppercase;
-  color: var(--gold); margin-top: .3rem; opacity: 0;
+  font-size: 12px; letter-spacing: 6px; text-transform: uppercase; font-weight: 600;
+  color: var(--gold); margin-top: .3rem; opacity: 80;
 }
 .cover-floral-bot { width: 140px; display: block; margin: .25rem auto 0; opacity: 0; transform: scaleY(-1); }
 
@@ -282,7 +290,7 @@ body {
 .orn-line { flex:1; height:1px; background:var(--gold); opacity:.28; }
 .orn-center {
   font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px;
-  color:var(--gold2); padding:0 1rem;
+  color:var(--olive2); padding:0 1rem;
 }
 .orn-dark { background:var(--olive); }
 .orn-dark .orn-line { background:rgba(201,185,154,.25); opacity:1; }
@@ -469,7 +477,7 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
   font-family:'Cormorant Garamond',serif; font-style:italic;
   font-size:36px; font-weight:300; color:#e8dfc8; line-height:1.1;
 }
-.footer-date { font-size:8px; letter-spacing:6px; text-transform:uppercase; color:var(--sage); margin-top:.7rem; }
+.footer-date { font-size:12px; letter-spacing:6px; text-transform:uppercase; color:var(--sage); margin-top:.7rem; font-weight: 400;}
 .footer-love { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:14px; color:var(--gold2); margin-top:1.5rem; }
 
 /* ── FLORAL HELPERS ── */
@@ -660,9 +668,19 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
 .qr-note { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--sage); text-align:center; }
 
 /* ── PAPER CUT ── */
-.paper-cut-wrap { margin: 0; line-height: 0; display: block;
-  filter: drop-shadow(0 -3px 8px rgba(0,0,0,.14)); }
-.paper-cut-wrap svg { display: block; width: 100%; height: auto; }
+/* ── PAPER CUT ── */
+.paper-cut-wrap{
+  margin:0;
+  line-height:0;
+  display:block;
+  filter:drop-shadow(0 -3px 8px rgba(0,0,0,.14));
+}
+
+.paper-cut-wrap svg{
+  display:block;
+  width:100%;
+  height:auto;
+}
 
 /* ── EXTRA FLOAT ANIMATION ── */
 @keyframes flt-c {
@@ -1401,7 +1419,7 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
         <div style="display:flex;align-items:center;justify-content:center;gap:.75rem">
           <p style="font-family:'Cormorant Garamond',serif;font-size:21px;color:var(--olive);font-weight:400;flex:1;text-align:right">Antonio Monrroy</p>
           <span style="color:var(--gold);font-size:18px;flex-shrink:0">&amp;</span>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:21px;color:var(--olive);font-weight:400;flex:1;text-align:left">Martha Vega</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:21px;color:var(--olive);font-weight:400;flex:1;text-align:left">Martha  <br/>     Vega</p>
         </div>
       </div>
 
@@ -1627,36 +1645,66 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
     </div>
   </div>
 
-  <!-- papel cortado cream → olive -->
-  <div class="paper-cut-wrap" style="background:var(--olive)">
-    <svg viewBox="0 0 460 58" xmlns="http://www.w3.org/2000/svg">
-      <!-- base cream -->
-      <rect x="0" y="34" width="460" height="24" fill="#f0ece3"/>
-      <!-- rosa blanca izquierda -->
-      <circle cx="78" cy="27" r="16" fill="#f0ece3"/>
-      <circle cx="64" cy="33" r="11" fill="#f0ece3"/>
-      <circle cx="92" cy="33" r="11" fill="#f0ece3"/>
-      <ellipse cx="48" cy="41" rx="15" ry="7" fill="#f0ece3" transform="rotate(-22 48 41)"/>
-      <ellipse cx="105" cy="40" rx="10" ry="6" fill="#f0ece3" transform="rotate(18 105 40)"/>
-      <!-- girasol centro -->
-      <ellipse cx="230" cy="12" rx="7" ry="18" fill="#f0ece3"/>
-      <ellipse cx="230" cy="12" rx="7" ry="18" fill="#f0ece3" transform="rotate(45 230 30)"/>
-      <ellipse cx="230" cy="12" rx="7" ry="18" fill="#f0ece3" transform="rotate(90 230 30)"/>
-      <ellipse cx="230" cy="12" rx="7" ry="18" fill="#f0ece3" transform="rotate(135 230 30)"/>
-      <circle cx="230" cy="30" r="14" fill="#f0ece3"/>
-      <!-- rosa blanca derecha -->
-      <circle cx="382" cy="27" r="16" fill="#f0ece3"/>
-      <circle cx="368" cy="33" r="11" fill="#f0ece3"/>
-      <circle cx="396" cy="33" r="11" fill="#f0ece3"/>
-      <ellipse cx="355" cy="40" rx="10" ry="6" fill="#f0ece3" transform="rotate(-18 355 40)"/>
-      <ellipse cx="412" cy="41" rx="15" ry="7" fill="#f0ece3" transform="rotate(22 412 41)"/>
-      <!-- iris morado tiny -->
-      <circle cx="152" cy="39" r="4"   fill="#c9b99a" opacity=".5"/>
-      <circle cx="160" cy="32" r="2.8" fill="#c9b99a" opacity=".38"/>
-      <circle cx="308" cy="37" r="3.5" fill="#c9b99a" opacity=".45"/>
-      <circle cx="316" cy="30" r="2.5" fill="#c9b99a" opacity=".35"/>
-    </svg>
-  </div>
+  <div class="paper-cut-wrap">
+<svg viewBox="0 0 460 60" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Fondo café oscuro -->
+  <rect width="460" height="50" fill="#3F2B01"/>
+
+  <!-- Franja crema -->
+  <rect x="0" y="20" width="460" height="5" fill="#F4F0EB"/>
+
+  <!-- Flor blanca izquierda -->
+  <g transform="translate(60 20)">
+    <ellipse rx="5" ry="11" fill="#F4F0EB"/>
+    <ellipse rx="5" ry="11" fill="#F4F0EB" transform="rotate(45)"/>
+    <ellipse rx="5" ry="11" fill="#F4F0EB" transform="rotate(90)"/>
+    <ellipse rx="5" ry="11" fill="#F4F0EB" transform="rotate(135)"/>
+    <circle r="3" fill="#D9CEC0"/>
+  </g>
+
+  <!-- Flor lila -->
+  <g transform="translate(125 20)">
+    <ellipse rx="3" ry="6" fill="#C8B4D9"/>
+    <ellipse rx="3" ry="6" fill="#C8B4D9" transform="rotate(72)"/>
+    <ellipse rx="3" ry="6" fill="#C8B4D9" transform="rotate(144)"/>
+    <ellipse rx="3" ry="6" fill="#C8B4D9" transform="rotate(216)"/>
+    <ellipse rx="3" ry="6" fill="#C8B4D9" transform="rotate(288)"/>
+    <circle r="2" fill="#B197C7"/>
+  </g>
+
+  <!-- Girasol -->
+  <g transform="translate(230 20)">
+    <ellipse rx="4" ry="12" fill="#DDB54A"/>
+    <ellipse rx="4" ry="12" fill="#DDB54A" transform="rotate(30)"/>
+    <ellipse rx="4" ry="12" fill="#DDB54A" transform="rotate(60)"/>
+    <ellipse rx="4" ry="12" fill="#DDB54A" transform="rotate(90)"/>
+    <ellipse rx="4" ry="12" fill="#DDB54A" transform="rotate(120)"/>
+    <ellipse rx="4" ry="12" fill="#DDB54A" transform="rotate(150)"/>
+    <circle r="7" fill="#5A3415"/>
+  </g>
+
+  <!-- Flor blanca derecha -->
+  <g transform="translate(335 20)">
+    <ellipse rx="5" ry="11" fill="#F4F0EB"/>
+    <ellipse rx="5" ry="11" fill="#F4F0EB" transform="rotate(45)"/>
+    <ellipse rx="5" ry="11" fill="#F4F0EB" transform="rotate(90)"/>
+    <ellipse rx="5" ry="11" fill="#F4F0EB" transform="rotate(135)"/>
+    <circle r="3" fill="#D9CEC0"/>
+  </g>
+
+  <!-- Flor lila -->
+  <g transform="translate(400 20)">
+    <ellipse rx="3" ry="6" fill="#C8B4D9"/>
+    <ellipse rx="3" ry="6" fill="#C8B4D9" transform="rotate(72)"/>
+    <ellipse rx="3" ry="6" fill="#C8B4D9" transform="rotate(144)"/>
+    <ellipse rx="3" ry="6" fill="#C8B4D9" transform="rotate(216)"/>
+    <ellipse rx="3" ry="6" fill="#C8B4D9" transform="rotate(288)"/>
+    <circle r="2" fill="#B197C7"/>
+  </g>
+
+</svg>
+</div>
 
   <!-- ══ COUNTDOWN ══ -->
   <div class="sec sec-dark rv">
@@ -1732,36 +1780,66 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
     </div>
   </div>
 
-  <!-- papel cortado cream2 → olive footer -->
-  <div class="paper-cut-wrap" style="background:var(--olive)">
-    <svg viewBox="0 0 460 52" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="30" width="460" height="22" fill="#f0ece3"/>
-      <!-- rosa pequeña izquierda -->
-      <circle cx="60" cy="23" r="13" fill="#f0ece3"/>
-      <circle cx="48" cy="28" r="9"  fill="#f0ece3"/>
-      <circle cx="72" cy="28" r="9"  fill="#f0ece3"/>
-      <ellipse cx="36" cy="34" rx="12" ry="6" fill="#f0ece3" transform="rotate(-20 36 34)"/>
-      <!-- girasol pequeño -->
-      <ellipse cx="200" cy="10" rx="5.5" ry="15" fill="#f0ece3"/>
-      <ellipse cx="200" cy="10" rx="5.5" ry="15" fill="#f0ece3" transform="rotate(45 200 25)"/>
-      <ellipse cx="200" cy="10" rx="5.5" ry="15" fill="#f0ece3" transform="rotate(90 200 25)"/>
-      <ellipse cx="200" cy="10" rx="5.5" ry="15" fill="#f0ece3" transform="rotate(135 200 25)"/>
-      <circle cx="200" cy="25" r="11" fill="#f0ece3"/>
-      <!-- rosa centro -->
-      <circle cx="260" cy="20" r="15" fill="#f0ece3"/>
-      <circle cx="246" cy="27" r="10" fill="#f0ece3"/>
-      <circle cx="274" cy="27" r="10" fill="#f0ece3"/>
-      <!-- rosa pequeña derecha -->
-      <circle cx="400" cy="23" r="13" fill="#f0ece3"/>
-      <circle cx="388" cy="28" r="9"  fill="#f0ece3"/>
-      <circle cx="412" cy="28" r="9"  fill="#f0ece3"/>
-      <ellipse cx="424" cy="34" rx="12" ry="6" fill="#f0ece3" transform="rotate(20 424 34)"/>
-      <!-- iris -->
-      <circle cx="130" cy="34" r="3.5" fill="#c9b99a" opacity=".48"/>
-      <circle cx="137" cy="28" r="2.4" fill="#c9b99a" opacity=".35"/>
-      <circle cx="330" cy="32" r="3"   fill="#c9b99a" opacity=".42"/>
-    </svg>
-  </div>
+  <div class="paper-cut-wrap">
+<svg viewBox="0 0 460 60" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Fondo café oscuro -->
+  <rect width="460" height="50" fill="#3F2B01"/>
+
+  <!-- Franja crema -->
+  <rect x="0" y="20" width="460" height="5" fill="#F4F0EB"/>
+
+  <!-- Flor blanca izquierda -->
+  <g transform="translate(60 20)">
+    <ellipse rx="5" ry="11" fill="#F4F0EB"/>
+    <ellipse rx="5" ry="11" fill="#F4F0EB" transform="rotate(45)"/>
+    <ellipse rx="5" ry="11" fill="#F4F0EB" transform="rotate(90)"/>
+    <ellipse rx="5" ry="11" fill="#F4F0EB" transform="rotate(135)"/>
+    <circle r="3" fill="#D9CEC0"/>
+  </g>
+
+  <!-- Flor lila -->
+  <g transform="translate(125 20)">
+    <ellipse rx="3" ry="6" fill="#C8B4D9"/>
+    <ellipse rx="3" ry="6" fill="#C8B4D9" transform="rotate(72)"/>
+    <ellipse rx="3" ry="6" fill="#C8B4D9" transform="rotate(144)"/>
+    <ellipse rx="3" ry="6" fill="#C8B4D9" transform="rotate(216)"/>
+    <ellipse rx="3" ry="6" fill="#C8B4D9" transform="rotate(288)"/>
+    <circle r="2" fill="#B197C7"/>
+  </g>
+
+  <!-- Girasol -->
+  <g transform="translate(230 20)">
+    <ellipse rx="4" ry="12" fill="#DDB54A"/>
+    <ellipse rx="4" ry="12" fill="#DDB54A" transform="rotate(30)"/>
+    <ellipse rx="4" ry="12" fill="#DDB54A" transform="rotate(60)"/>
+    <ellipse rx="4" ry="12" fill="#DDB54A" transform="rotate(90)"/>
+    <ellipse rx="4" ry="12" fill="#DDB54A" transform="rotate(120)"/>
+    <ellipse rx="4" ry="12" fill="#DDB54A" transform="rotate(150)"/>
+    <circle r="7" fill="#5A3415"/>
+  </g>
+
+  <!-- Flor blanca derecha -->
+  <g transform="translate(335 20)">
+    <ellipse rx="5" ry="11" fill="#F4F0EB"/>
+    <ellipse rx="5" ry="11" fill="#F4F0EB" transform="rotate(45)"/>
+    <ellipse rx="5" ry="11" fill="#F4F0EB" transform="rotate(90)"/>
+    <ellipse rx="5" ry="11" fill="#F4F0EB" transform="rotate(135)"/>
+    <circle r="3" fill="#D9CEC0"/>
+  </g>
+
+  <!-- Flor lila -->
+  <g transform="translate(400 20)">
+    <ellipse rx="3" ry="6" fill="#C8B4D9"/>
+    <ellipse rx="3" ry="6" fill="#C8B4D9" transform="rotate(72)"/>
+    <ellipse rx="3" ry="6" fill="#C8B4D9" transform="rotate(144)"/>
+    <ellipse rx="3" ry="6" fill="#C8B4D9" transform="rotate(216)"/>
+    <ellipse rx="3" ry="6" fill="#C8B4D9" transform="rotate(288)"/>
+    <circle r="2" fill="#B197C7"/>
+  </g>
+
+</svg>
+</div>
 
   <!-- ══ FOOTER ══ -->
   <div class="orn orn-dark rv"><div class="orn-line"></div><div class="orn-center">— ✦ —</div><div class="orn-line"></div></div>
@@ -2166,6 +2244,7 @@ loop();
     // diagonal abajo-izquierda
     { img:'diagonal.svg', t:'0', r:'auto', b:'0',   l:'0',   rot:'-15deg', dx:'18px', dy:'18px',  sz:'220px', an:'flt-a' },
     // redonda arriba-derecha
+    { img:'redondo.svg',  t:'0',    r:'0',    b:'auto',l:'auto', rot:'-8deg',  dx:'18px',  dy:'-18px', sz:'125px', an:'flt-b' },
     { img:'redondo.svg',  t:'0',    r:'0',    b:'auto',l:'auto', rot:'-8deg',  dx:'18px',  dy:'-18px', sz:'125px', an:'flt-b' },
     // diagonal arriba-izquierda
     { img:'diagonal.svg', t:'0',    r:'auto', b:'0', l:'0',   rot:'-13deg', dx:'18px', dy:'18px', sz:'220px', an:'flt-a' },

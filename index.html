@@ -202,8 +202,9 @@ body {
 .cover-name {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(56px, 15vw, 72px);
-  font-weight: 300; color: #e8dfc8; line-height: .84;
+  font-weight: 300; color: #e8dfc8; line-height: .9;
   overflow: hidden; display: block;
+  padding-bottom: 10px; /* espacio para el descendente de la J */
 }
 .cover-name .ch { display: inline-block; opacity: 0; transform: translateY(70px); }
 .cover-amp {
@@ -398,7 +399,7 @@ body {
   font-weight:300; color:#e8dfc8; line-height:1; display:block;
   text-shadow:0 0 40px rgba(201,185,154,.2);
 }
-.cd-lbl { font-size:7px; letter-spacing:4px; text-transform:uppercase; color:var(--sage); display:block; margin-top:5px; }
+.cd-lbl { font-size:7px; letter-spacing:4px; text-transform:uppercase; color:var(--sage); display:block; margin-top:10px; }
 .cd-sep {
   font-family:'Cormorant Garamond',serif;
   font-size:clamp(48px,13vw,68px);
@@ -406,7 +407,7 @@ body {
   animation:seppulse 2s ease-in-out infinite;
 }
 @keyframes seppulse { 0%,100%{opacity:.5} 50%{opacity:.15} }
-
+.photo-ajust { width:100%; height:auto; object-fit:cover; display:block; transform-origin: top left;}
 /* ── RSVP ── */
 .rsvp-field { position:relative; margin-bottom:.9rem; }
 .rsvp-input {
@@ -774,7 +775,7 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
         <circle cx="0" cy="0" r="2.8" fill="#c8b090" opacity=".82"/>
       </g>
     </svg>
-    <p class="env-hint">Toca para abrir ✦</p>
+    <p class="env-hint" style="color:var(--text)">Toca para abrir ✦</p>
   </div>
 
   <!-- Arreglo redondo: guarda tu imagen como assets/flores/arreglo-redondo.png -->
@@ -1214,16 +1215,13 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
   <div class="orn rv"><div class="orn-line"></div><div class="orn-center">— ✦ —</div><div class="orn-line"></div></div>
   <div class="strip rv">
     <div class="strip-cell">
-      <!-- <img src="assets/fotos/foto1.jpg" alt=""> -->
-      <svg viewBox="0 0 28 28"><circle cx="14" cy="10" r="5"/><ellipse cx="14" cy="22" rx="9" ry="5"/></svg>
+      <img src="assets/fotos/foto1.jpg" alt="">
     </div>
     <div class="strip-cell">
-      <!-- <img src="assets/fotos/foto2.jpg" alt=""> -->
-      <svg viewBox="0 0 28 28"><circle cx="14" cy="10" r="5"/><ellipse cx="14" cy="22" rx="9" ry="5"/></svg>
+      <img src="assets/fotos/foto2.png" alt="">
     </div>
     <div class="strip-cell">
-      <!-- <img src="assets/fotos/foto3.jpg" alt=""> -->
-      <svg viewBox="0 0 28 28"><circle cx="14" cy="10" r="5"/><ellipse cx="14" cy="22" rx="9" ry="5"/></svg>
+      <img src="assets/fotos/foto33.jpg" class="photo-ajust" alt="">
     </div>
   </div>
 
@@ -1360,7 +1358,7 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
       <circle cx="42" cy="34" r="1.8" fill="#c9b99a" opacity=".38"/>
       <circle cx="100" cy="22" r="1.8" fill="#c9b99a" opacity=".35"/>
     </svg>
-    <span class="lbl" style="color:var(--gold2)">Falta poco para el gran día</span>
+    <span class="lbl" style="color:var(--sage)">Falta poco para el gran día</span>
     <h2 class="title title-light" style="font-style:italic">Nos vemos en</h2>
     <div class="cd-units">
       <div class="cd-unit"><span class="cd-num" id="cd-d">--</span><span class="cd-lbl">Días</span></div>
@@ -1469,7 +1467,7 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
     <p class="footer-names">Madai &amp; Juan</p>
     <p class="footer-date">18 · Julio · 2026</p>
     <div class="hairline" style="background:linear-gradient(90deg,transparent,rgba(201,185,154,.3),transparent);margin-top:1.75rem"></div>
-    <p class="footer-love">Con todo nuestro amor, para siempre</p>
+    <p class="footer-love" style="color:var(--sage)">Con todo nuestro amor, para siempre</p>
     <img src="assets/flores/infinito.svg" class="footer-flores" alt="">
     <img src="assets/flores/infinito.svg" class="footer-floresderecha" alt="">
   </div>

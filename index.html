@@ -15,8 +15,8 @@
   --olive:  #3f2b01;
   --olive2: #39265a;
   --gold:   #D7B05B;
-  --gold2:  #3f2b01;
-  --brown:  #7e5894;
+  --gold2:  #2e2001;
+  --brown:  #481c61;
   --sage:   #8a9e7a;
   --text:   #3a3228;
   --sun:    #e8b84b;
@@ -123,11 +123,11 @@ body {
 /* ── COVER ── */
 .cover {
   background: var(--olive);
-  padding: 2rem 2rem 4.5rem;
+  padding: 2rem 2rem 3rem;
   text-align: center; position: relative;
   overflow: hidden; min-height: 90vh;
   display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
+  align-items: center; justify-content: flex-end;
 }
 .cover::before {
   content: '';
@@ -146,11 +146,45 @@ body {
 .cover-corner-bl { bottom: -5px; left: -5px; width: 180px; transform: scaleY(-1); }
 .cover-corner-br { bottom: -5px; right: -5px; width: 180px; transform: scale(-1,-1); }
 
+/* ── FOTO DE PORTADA ── */
+.cover-photo-wrap {
+  position: absolute; inset: 0; z-index: 0; overflow: hidden;
+}
+.cover-photo-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top; display: block;
+}
+.cover-photo-wrap::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg,
+     rgba(255,255,255,0) 0%,
+    rgba(238,229,242,0.08) 20%,
+    rgba(217,198,221,0.18) 40%,
+    rgba(196,175,152,0.35) 58%,
+    rgba(116,87,45,0.65) 75%,
+    rgba(63,43,1,0.92) 92%,
+    rgba(63,43,1,1) 100%
+  );
+}
+/* Contenido de portada por encima de la foto */
+.cover > *:not(.cover-photo-wrap):not(.cover-corner):not(.cover-stamp) {
+  position: relative; z-index: 1;
+}
+
+/* ── STAMP COMO PIN ── */
 .cover-stamp {
-  width: 88px; height: 88px;
-  border: 1px solid rgba(201,185,154,.3); border-radius: 50%;
-  display: inline-flex; align-items: center; justify-content: center;
-  margin-bottom: 2rem; opacity: 0;
+  width: 94px; height: 94px;
+  border: 1px solid rgba(201,185,154,.38); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translate(-50%, -40%); /* solo ~60% visible — efecto pin */
+  z-index: 3;
+  box-shadow: 0 6px 24px rgba(0,0,0,.35), 0 2px 8px rgba(0,0,0,.2);
+  background: rgba(30,42,30,.55);
+  backdrop-filter: blur(4px);
 }
 .cover-stamp-inner {
   width: 72px; height: 72px;
@@ -162,26 +196,26 @@ body {
 
 .cover-notice {
   font-size: 8px; letter-spacing: 6px; text-transform: uppercase;
-  color: var(--gold2); margin-bottom: 2.5rem; opacity: 0;
+  color: var(--gold2); margin-bottom: .2rem; opacity: 0;
 }
-.cover-floral { width: 180px; display: block; margin: 0 auto 1.5rem; opacity: 0; }
+.cover-floral { width: 140px; display: block; margin: 0 auto .25rem; opacity: 0; }
 .cover-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(64px, 18vw, 84px);
-  font-weight: 300; color: #e8dfc8; line-height: .88;
+  font-size: clamp(56px, 15vw, 72px);
+  font-weight: 300; color: #e8dfc8; line-height: .84;
   overflow: hidden; display: block;
 }
 .cover-name .ch { display: inline-block; opacity: 0; transform: translateY(70px); }
 .cover-amp {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic; font-size: clamp(24px, 7vw, 36px);
-  color: var(--gold); display: block; margin: .8rem 0; opacity: 0;
+  color: var(--gold); display: block; margin: .05rem 0; opacity: 0;
 }
 .cover-date {
   font-size: 9px; letter-spacing: 6px; text-transform: uppercase;
-  color: var(--gold); margin-top: 2rem; opacity: 0;
+  color: var(--gold); margin-top: .3rem; opacity: 0;
 }
-.cover-floral-bot { width: 180px; display: block; margin: 1.75rem auto 0; opacity: 0; transform: scaleY(-1); }
+.cover-floral-bot { width: 140px; display: block; margin: .25rem auto 0; opacity: 0; transform: scaleY(-1); }
 
 /* shimmer banner */
 .olive-banner {
@@ -200,12 +234,43 @@ body {
 /* ── PHOTO ── */
 .photo-frame {
   width: 100%; aspect-ratio: 3/4;
-  background: linear-gradient(160deg, #d5cdbf, #b8a98a);
+  background: linear-gradient(160deg, #e6b767, #422c01);
   position: relative; overflow: hidden;
   display: flex; align-items: center; justify-content: center;
 }
 .photo-frame img { width:100%; height:100%; object-fit:cover; display:block; transition: transform .8s ease; }
 .photo-frame:hover img { transform: scale(1.04); }
+
+/* degradado inferior — suaviza el corte de la foto */
+.photo-frame::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 42%;
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    rgba(247,243,236,.55) 55%,
+    rgba(247,243,236,.94) 100%
+  );
+  z-index: 2; pointer-events: none;
+}
+
+/* frase en esquina superior izquierda */
+.photo-quote {
+  position: absolute; top: 2rem; left: 1.5rem;
+  z-index: 3; text-align: left; max-width: 55%;
+}
+.photo-quote::before {
+  content: '';
+  display: block; width: 26px; height: 2px;
+  background: var(--olive); margin-bottom: .5rem; opacity: .75;
+}
+.photo-quote p {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(19px, 5.5vw, 25px);
+  color: var(--olive); line-height: 1.22; font-weight: 500;
+  text-shadow: 0 1px 10px rgba(247,243,236,.85);
+}
 .photo-placeholder { display:flex; flex-direction:column; align-items:center; gap:.75rem; opacity:.3; }
 .photo-placeholder svg { width: 60px; }
 .photo-placeholder p { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:white; font-weight:300; }
@@ -228,7 +293,7 @@ body {
 .sec-alt  { background:var(--cream2); }
 
 .lbl {
-  font-size:8px; letter-spacing:6px; text-transform:uppercase;
+  font-size:10px; letter-spacing:4px; text-transform:uppercase;
   color:var(--gold2); margin-bottom:.75rem; display:block;
 }
 .title {
@@ -239,9 +304,9 @@ body {
 .title-light { color:#e8dfc8; }
 .italic-quote {
   font-family:'Cormorant Garamond',serif; font-style:italic;
-  font-size:16px; color:var(--brown); line-height:1.9; margin-top:.5rem;
+  font-size:20px; color:var(--brown); line-height:1.9; margin-top:.5rem;
 }
-.body-text { font-size:12.5px; line-height:2.2; color:var(--brown); font-weight:300; margin-top:.75rem; }
+.body-text { font-size:16px; line-height:2.2; color:var(--brown); font-weight:300; margin-top:.75rem; }
 
 .hairline {
   width:60px; height:1px; margin:1.25rem auto;
@@ -275,11 +340,11 @@ body {
 .venue-img-placeholder svg { width:56px; stroke:white; fill:none; stroke-width:1.2; }
 .venue-body { padding:1.75rem 1.5rem; text-align:center; }
 .venue-name { font-family:'Cormorant Garamond',serif; font-size:24px; color:var(--olive); margin-bottom:.35rem; }
-.venue-time { font-size:8px; letter-spacing:4px; text-transform:uppercase; color:var(--olive); margin-bottom:.6rem; }
+.venue-time { font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(--olive); margin-bottom:.6rem; }
 .venue-addr { font-size:11.5px; color:var(--gold2); line-height:2; font-weight:300; }
 .venue-map-btn {
   display:inline-flex; align-items:center; gap:6px;
-  margin-top:1rem; font-size:8px; letter-spacing:3px; text-transform:uppercase;
+  margin-top:1rem; font-size:10px; letter-spacing:3px; text-transform:uppercase;
   color:var(--sage); border-bottom:1px solid var(--sage); padding-bottom:2px;
   cursor:pointer; text-decoration:none; transition:all .3s ease; position:relative;
 }
@@ -315,15 +380,15 @@ body {
 .dc-wrap { display:flex; justify-content:center; gap:3rem; margin:2rem 0; }
 .dc-item { display:flex; flex-direction:column; align-items:center; gap:.7rem; }
 .dc-circle {
-  width:70px; height:70px; border:1px solid var(--gold); border-radius:50%;
+  width:90px; height:90px; border:1px solid var(--gold); border-radius:50%;
   display:flex; align-items:center; justify-content:center;
   background:rgba(201,185,154,.05);
   transition:all .4s cubic-bezier(.34,1.56,.64,1);
 }
 .dc-item:hover .dc-circle { background:rgba(201,185,154,.14); transform:scale(1.12); }
 .dc-circle svg { width:28px; height:28px; stroke:var(--gold2); fill:none; stroke-width:1.2; }
-.dc-lbl { font-size:8px; letter-spacing:3px; text-transform:uppercase; color:var(--gold2); }
-
+.dc-lbl { font-size:8px; letter-spacing:2px ;text-transform:uppercase; color:var(--gold2); }
+.dc-img { width:50px; height:80px; display:block; }
 /* ── COUNTDOWN ── */
 .cd-units { display:flex; justify-content:center; align-items:flex-start; gap:.25rem; margin-top:1.75rem; }
 .cd-unit { text-align:center; }
@@ -806,6 +871,10 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
 
   <!-- ══ COVER ══ -->
   <div class="cover">
+    <!-- Foto de portada · coloca tu imagen en: assets/fotos/pareja.jpg -->
+    <div class="cover-photo-wrap">
+      <img src="assets/fotos/pareja.png" alt="Madai y Juan">
+    </div>
     <!-- botanical corners -->
     <svg class="cover-corner cover-corner-tl" viewBox="0 0 220 220" fill="none">
       <path d="M10 210 C35 170 65 140 95 110 C125 80 158 52 200 18" stroke="#5a7a4a" stroke-width="1.2" opacity=".45"/>
@@ -886,7 +955,6 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
       </div>
     </div>
 
-    <p class="cover-notice">¡Nos casamos!</p>
 
     <!-- rosa blanca izq + girasol centro + rosa blanca der -->
     <svg class="cover-floral flt-a" viewBox="0 0 200 85" fill="none" style="margin-bottom:1.75rem">
@@ -988,10 +1056,11 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
   <!-- ══ PHOTO ══ -->
   <div class="photo-frame rv">
     <div class="photo-frame-border"></div>
-    <!-- <img src="assets/fotos/pareja.jpg" alt="Sofía y Mateo"> -->
-    <div class="photo-placeholder">
-      <svg viewBox="0 0 60 60" fill="none" stroke="white" stroke-width="1.2"><circle cx="30" cy="22" r="10"/><ellipse cx="30" cy="46" rx="18" ry="10"/></svg>
-      <p>Agrega la foto de la pareja</p>
+    <img src="assets/fotos/portada.png" alt="Madai y Juan">
+    <div class="photo-quote">
+      <p>"Después de todo, permanecen la fe, la esperanza y el amor;  <br/>pero el amor es el más importante." <br/>
+
+1 Corintios 13:13 ✨</p>
     </div>
   </div>
 
@@ -1093,14 +1162,13 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
     <div class="dc-wrap">
       <div class="dc-item rv-zoom rv rv-d2">
         <div class="dc-circle">
-          <svg viewBox="0 0 24 24"><path d="M12 3l2 7 6-2-4 5 4 6-10-4-10 4 4-6-4-5 6 2 2-7z"/></svg>
+          <img src="assets/fotos/caballeros.svg" class="dc-img" alt="">
         </div>
         <span class="dc-lbl">Caballeros</span>
       </div>
       <div class="dc-item rv-zoom rv rv-d3">
         <div class="dc-circle">
-          <svg viewBox="0 0 24 24"><path d="M8 4Q6 6 7 9l1 9h8l1-9Q18 6 16 4q-2 3-4 3-2 0-4-3z"/><path d="M8 18l-1 4h10l-1-4"/></svg>
-        </div>
+<img src="assets/fotos/damas.svg" class="dc-img" alt="">        </div>
         <span class="dc-lbl">Damas</span>
       </div>
     </div>
@@ -1213,11 +1281,11 @@ textarea.rsvp-input { resize:none; font-family:'Montserrat',sans-serif; }
         </svg>
       </span>
       <span class="lbl" style="margin-bottom:.5rem">Una nota con cariño</span>
-      <p class="italic-quote" style="font-size:14.5px;line-height:1.85">
+      <p class="italic-quote" style="font-size:18px;line-height:1.85">
         Para que todos puedan disfrutar plenamente esta noche tan especial, hemos organizado una velada solo para adultos.
       </p>
-      <p class="body-text" style="margin-top:.75rem;font-size:11.5px">
-        ¡Aprovecha esta noche para disfrutar sin preocupaciones — es tu turno de celebrar! 🌙
+      <p class="body-text" style="margin-top:.75rem;font-size:14px">
+        ¡Aprovecha esta noche para disfrutar sin preocupaciones <br> Es tu turno de celebrar! 🌙
       </p>
     </div>
   </div>
@@ -1529,8 +1597,8 @@ window.addEventListener('load', () => {
     }, ms);
   }
 
-  // stamp
-  showEl('.cover-stamp', delay);
+  // stamp pin — preserva el translate del pin al aparecer
+  showEl('.cover-stamp', delay, { transform: 'translate(-50%, -40%)' });
   // notice
   showEl('.cover-notice', delay + 100);
   // top floral
